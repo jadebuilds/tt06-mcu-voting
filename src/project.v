@@ -31,7 +31,7 @@ module tt_um_example (
   assign uo_out[0] = voter0 | voter1 | voter2 | voter3 | voter4 | voter5 | voter6 | voter7;
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out[7:1]  = 0  // Example: ou_out is the sum of ui_in and uio_in
+  assign uo_out[7:1]  = 0;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
 
