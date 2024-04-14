@@ -5,7 +5,7 @@
 
 `define default_netname none
 
-module tt_um_example (
+module tt_um_voting_thingey (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -18,14 +18,14 @@ module tt_um_example (
 
   // some processing! 
   // all the input becomes a part of our voting system 
-  assign wire voter0 = ui_in[0];
-  assign wire voter1 = ui_in[1];
-  assign wire voter2 = ui_in[2];
-  assign wire voter3 = ui_in[3];
-  assign wire voter4 = ui_in[4];
-  assign wire voter5 = ui_in[5];
-  assign wire voter6 = ui_in[6];
-  assign wire voter7 = ui_in[7];
+  wire voter0 = ui_in[0];
+  wire voter1 = ui_in[1];
+  wire voter2 = ui_in[2];
+  wire voter3 = ui_in[3];
+  wire voter4 = ui_in[4];
+  wire voter5 = ui_in[5];
+  wire voter6 = ui_in[6];
+  wire voter7 = ui_in[7];
 
   // then we do a an "or" and assign to the first register of the output
   assign uo_out[0] = voter0 | voter1 | voter2 | voter3 | voter4 | voter5 | voter6 | voter7;
