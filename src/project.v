@@ -17,7 +17,8 @@ module tt_um_voting_thingey (
 );
 
   // some processing! 
-  // all the input becomes a part of our voting system 
+  // all the input becomes a part of our voting system
+  // note: 0 == safe; 1 == 
   wire voter0 = ui_in[0];
   wire voter1 = ui_in[1];
   wire voter2 = ui_in[2];
@@ -27,11 +28,29 @@ module tt_um_voting_thingey (
   wire voter6 = ui_in[6];
   wire voter7 = ui_in[7];
 
-  // then we do a an "or" and assign to the first register of the output
-  assign uo_out[0] = voter0 | voter1 | voter2 | voter3 | voter4 | voter5 | voter6 | voter7;
+  wire num_voters = uio_in[3:0]; // 4 bits for voters 0000 -> 1111
+  wire num_fails_okay = uio_in[6:4];  // 0 by default // 3 bits - max of 7 
+
+  // depending on the voters: count failures
+  // num voters =?= 5 => ui_in[first five]
+  reg count_fails = 0;
+  reg result;
+  always @* begin
+    for (int i = 0; i < num_voters; i++) begin
+      count_fails += ui_in[i];
+    end
+
+    result = (count_fails > num_fails_okay);
+  end
+
+  // compute result based on threshold and voters 
+  // assign result = voter0 | voter1 | voter2 | voter3 | voter4 | voter5 | voter6 | voter7;
+  
+  assign uo_out[4:1] = count_fails;
+  assign uo_out[0] = result;
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out[7:1]  = 0;  // Example: ou_out is the sum of ui_in and uio_in
+  assign uo_out[7:5]  = 0;  // Remainder assigned low
   assign uio_out = 0;
   assign uio_oe  = 0;
 
