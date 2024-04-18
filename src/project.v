@@ -33,7 +33,7 @@ module tt_um_voting_thingey (
 
   // depending on the voters: count failures
   // num voters =?= 5 => ui_in[first five]
-  reg [3:0] count_fails = 0;  // clog2(num_voters) calculates the number of bits needed
+  reg[3:0] count_fails = 0;  
   reg result;
   always @* begin
     count_fails = 0;  // Reset count_fails each time
