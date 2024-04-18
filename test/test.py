@@ -35,7 +35,7 @@ async def test_project(dut):
   dut._log.info("Test case: Given any 1 input, should emit 1")  
 
   # Set the input values, wait one clock cycle, and check the output
-  dut.ui_in.value = 0b11111011
+  dut.ui_in.value = 0b00000100
 
   await ClockCycles(dut.clk, 1)
 
