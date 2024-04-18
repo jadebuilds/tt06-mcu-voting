@@ -25,7 +25,6 @@ async def test_project(dut):
   dut._log.info("Test case: Given all 1 input, should emit 1 (N-0 consensus, 8 voters)")  
 
   # Set the input values, wait one clock cycle, and check the output
-  dut._log.info("Test")
   dut.ui_in.value = 0b11111111
 
   await ClockCycles(dut.clk, 1)
@@ -36,7 +35,6 @@ async def test_project(dut):
   dut._log.info("Test case: Given any 1 input, should emit 1")  
 
   # Set the input values, wait one clock cycle, and check the output
-  dut._log.info("Test")
   dut.ui_in.value = 0b11111011
 
   await ClockCycles(dut.clk, 1)
@@ -47,7 +45,6 @@ async def test_project(dut):
   dut._log.info("Test case: Given all 0 input, should emit 0")
 
   # Set the input values, wait one clock cycle, and check the output
-  dut._log.info("Test")
   dut.ui_in.value = 0b00000000
 
   await ClockCycles(dut.clk, 1)
