@@ -37,8 +37,10 @@ module tt_um_voting_thingey (
   reg result;
   always @* begin
     count_fails = 0;  // Reset count_fails each time
-    for (int i = 0; i < num_voters; i++) begin
-      count_fails += ui_in[i];
+    for (int i = 0; i < 8; i++) begin
+      if (i < num_voters) begin
+        count_fails += ui_in[i];
+      end
     end
     result = (count_fails > num_fails_okay);
   end
