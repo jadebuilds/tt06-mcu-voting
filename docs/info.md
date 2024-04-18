@@ -1,20 +1,13 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
+Our project used the 8 inputs as voters, expecting 1 as "FAIL" and 0 as "PASS" for votes in the system. As a default, if all systems vote for a pass, the consensus is pass. However, we also give the user the ability to customize the number of voters and the threshold of passing. 
 
-Explain how your project works
+For instnace, a user may have 8 voters and fail if 3 votes fail. 
+
+This is for a safety system where redundant microcontrollers are used to control some safety critical hardware and we want to avoid single point faults. 
 
 ## How to test
-
-Explain how to use your project
+Tested with the unit tests running `make -B` in test subfolder.  
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+N/A
