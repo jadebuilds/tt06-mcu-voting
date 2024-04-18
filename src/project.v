@@ -28,18 +28,18 @@ module tt_um_voting_thingey (
   wire voter6 = ui_in[6];
   wire voter7 = ui_in[7];
 
-  wire num_voters = uio_in[3:0]; // 4 bits for voters 0000 -> 1111
-  wire num_fails_okay = uio_in[6:4];  // 0 by default // 3 bits - max of 7 
+  wire[3:0] num_voters = uio_in[3:0]; // 4 bits for voters 0000 -> 1111
+  wire[2:0] num_fails_okay = uio_in[6:4];  // 0 by default // 3 bits - max of 7 
 
   // depending on the voters: count failures
   // num voters =?= 5 => ui_in[first five]
-  reg count_fails = 0;
+  reg [3:0] count_fails = 0;  // clog2(num_voters) calculates the number of bits needed
   reg result;
   always @* begin
+    count_fails = 0;  // Reset count_fails each time
     for (int i = 0; i < num_voters; i++) begin
       count_fails += ui_in[i];
     end
-
     result = (count_fails > num_fails_okay);
   end
 
